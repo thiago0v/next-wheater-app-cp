@@ -1,9 +1,14 @@
-// pages/profile.js
-export default function Profile() {
-    return (
-        <div>
-            <h1>Profile</h1>
-            <p>Informações do usuário aqui.</p>
-        </div>
-    );
+"use client"
+import { Header } from "@/components/Header/Header";
+import UserContext from "@/context/UserContext";
+import { useVerifyLogin } from "@/helpers/useVerifyLogin";
+import { useContext } from "react";
+
+export default function Perfil() {
+    useVerifyLogin()
+    const { userName } = useContext(UserContext) ?? {};
+
+    return <>
+        <Header title="Perfil" userName={userName} />
+    </>
 }
